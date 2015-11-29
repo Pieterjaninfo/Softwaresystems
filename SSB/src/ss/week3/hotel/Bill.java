@@ -43,8 +43,8 @@ public class Bill {
 		itemList.add(item);
 		if (output != null) {
 			output.printf(format, item.toString(), item.getAmount());
-			sum = sum + item.getAmount();
 		}
+		sum = sum + item.getAmount();
 		
 	}
 	
@@ -52,7 +52,10 @@ public class Bill {
 	 * Print the sum of the bill of all items on the output stream.
 	 */
 	public void close() {
+		if (output != null) {
 		output.printf(format, "The total sum is:", getSum());
+		}
+		//System.out.printf(format, "The total sum is:", this.getSum());
 	}
 	
 	//------------------- Queries -------------------

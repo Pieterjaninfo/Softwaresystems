@@ -3,7 +3,7 @@ package ss.week3.test;
 import org.junit.Before;
 import org.junit.Test;
 import ss.week3.hotel.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 
 public class BillTest {
@@ -11,8 +11,8 @@ public class BillTest {
 	private Bill bill;
 	private BillItem item;
 	private BillItem item2;
-	private Double cost;
-	private Double cost2;
+	private Double cost = 10.3;
+	private Double cost2 = 1.05;
 	
 	
 	@Before
@@ -25,13 +25,21 @@ public class BillTest {
 	@Test
 	public void testNewItem() {
 		bill.newItem(item);
-		assert cost == bill.getSum();
+		System.out.println(bill.getSum() + "; " + cost);
+		assertEquals(cost, bill.getSum(), 0.001);
 	}
 	
 	@Test
 	public void test2NewItem() {
 		bill.newItem(item);
 		bill.newItem(item2);
-		assert cost + cost2 == bill.getSum();
+		assertEquals(cost + cost2, bill.getSum(), 0.001);
+	}
+	
+	@Test
+	public void testClose() {
+		bill.newItem(item);
+		bill.newItem(item2);
+		bill.close();
 	}
 }
