@@ -23,6 +23,12 @@ public class Room {
     	safe = new Safe();
     	guest = null;
     }
+    
+    public Room(int no, PricedSafe safe) {
+    	number = no;
+    	this.safe = safe;
+    	guest = null;
+    }
 
     // ------------------ Queries --------------------------
 

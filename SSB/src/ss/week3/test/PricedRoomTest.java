@@ -16,12 +16,12 @@ public class PricedRoomTest {
 
     @Before
     public void setUp() throws Exception {
-        item = new PricedRoom(0, PRICE, 0);
+        item = new PricedRoom(0, PRICE, 0.0);
     }
 
     @Test
     public void testGetAmount() throws Exception {
-        assertEquals("GetAmount should return the price of the room.", PRICE, item.getAmount(), 0);
+        assertEquals("GetAmount should return the price of the room.", PRICE, item.getAmount(), 0.0);
     }
 
     @Test
