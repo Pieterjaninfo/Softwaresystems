@@ -1,5 +1,7 @@
 package ss.week3.hotel;
 
+import java.io.PrintStream;
+
 //import ss.week2.hotel.*;
 
 public class Hotel {
@@ -9,6 +11,8 @@ public class Hotel {
 	private Room room1;
 	private Room room2;
 	private Password password;
+	private Bill bill;
+	private Room billRoom;
 	
 	// ------------------ Constructor -----------------------
 	public Hotel(String hotelName) {
@@ -87,6 +91,28 @@ public class Hotel {
 			
 			//getRoom(nameGuest).setGuest(null);
 		}
+	}
+	
+	public Bill getBill(String guestName, int nights, PrintStream output) {
+		billRoom = getRoom(guestName);
+		if (billRoom == null && !(billRoom instanceof PricedRoom)) {
+			return null;
+		}
+		bill = new Bill(output);
+		
+		for (int i = 0; i < nights; i++) {
+			bill.newItem((PricedRoom) billRoom);
+		}
+		
+		
+		if (billRoom.getSafe() instanceof PricedSafe && billRoom.getSafe().isActive()) {
+			for (int i = 0; i < nights; i++) {
+				bill.newItem((PricedSafe) billRoom.getSafe());
+			}
+		}
+		
+		
+		return bill;
 	}
 	
 }
