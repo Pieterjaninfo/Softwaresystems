@@ -26,11 +26,12 @@ public class Bill {
 	 * items that can be added to the bill.
 	 * getAmount() return the value of a specific item
 	 */
-	static interface Item {
+	public static interface Item {
 		public String toString();
 		public double getAmount();
 		
 	}
+	
 	
 	//------------------- Commands ------------------------
 	
