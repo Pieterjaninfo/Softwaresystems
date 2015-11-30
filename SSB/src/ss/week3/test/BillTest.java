@@ -11,8 +11,8 @@ public class BillTest {
 	private Bill bill;
 	private BillItem item;
 	private BillItem item2;
-	private Double cost = 10.3;
-	private Double cost2 = 1.05;
+	private double cost = 10.3;
+	private double cost2 = 1.05;
 	
 	
 	@Before

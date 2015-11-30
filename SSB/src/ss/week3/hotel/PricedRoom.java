@@ -5,7 +5,7 @@ public class PricedRoom extends Room implements Bill.Item {
 	//------------------- Instance variables -------------------
 	
 	//private PricedSafe safe;
-	private Double roomPrice;
+	private double roomPrice;
 	private int roomNumber;
 	
 	//------------------- Constructor -------------------
@@ -16,7 +16,7 @@ public class PricedRoom extends Room implements Bill.Item {
 	 * @param roomPrice the price of the room
 	 * @param safePrice the price of the safe
 	 */
-	public PricedRoom(int roomNumber, Double roomPrice, Double safePrice) {
+	public PricedRoom(int roomNumber, double roomPrice, double safePrice) {
 		super(roomNumber, new PricedSafe(safePrice));
 		this.roomPrice = roomPrice;
 		this.roomNumber = roomNumber;	

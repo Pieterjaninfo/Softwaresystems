@@ -4,7 +4,7 @@ public class PricedSafe extends Safe implements Bill.Item {
 	
 	//------------------- Instance variables -------------------
 	
-	private Double price;
+	private double price;
 	
 	//------------------- Constructor -------------------
 	
