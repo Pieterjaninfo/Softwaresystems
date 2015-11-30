@@ -54,7 +54,7 @@ public class Bill {
 	 */
 	public void close() {
 		if (output != null) {
-		output.printf(format, "The total sum is:", getSum());
+			output.printf(format, "The total sum is:", getSum());
 		}
 		//System.out.printf(format, "The total sum is:", this.getSum());
 	}

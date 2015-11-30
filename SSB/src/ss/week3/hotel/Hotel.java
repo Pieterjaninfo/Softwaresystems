@@ -68,7 +68,7 @@ public class Hotel {
 	 */
 	public Bill getBill(String guestName, int nights, PrintStream output) {
 		billRoom = getRoom(guestName);
-		if (billRoom == null && !(billRoom instanceof PricedRoom)) {
+		if (billRoom == null || !(billRoom instanceof PricedRoom)) {
 			return null;
 		}
 		bill = new Bill(output);
@@ -81,6 +81,7 @@ public class Hotel {
 				bill.newItem((PricedSafe) billRoom.getSafe());
 			}
 		}
+		bill.close();
 		return bill;
 	}
 	

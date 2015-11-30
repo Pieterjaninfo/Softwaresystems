@@ -45,6 +45,10 @@ public class Password {
 	/*@ pure */ public Checker getChecker() {
 		return checker;
 	}
+	
+	/*@ pure */ public String getFactoryPassword() {
+		return factoryPassword;
+	}
 
 	// ------------------ Commands ----------------
 
