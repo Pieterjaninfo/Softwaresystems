@@ -59,6 +59,31 @@ public class Hotel {
 		return name;
 	}
 	
+	/**
+	 * Creates the bill for the guest.
+	 * @param guestName name of the guest
+	 * @param nights the amount of nights the guest sleeps in a room
+	 * @param output the specified output location
+	 * @return bill the bill, null if guest doesn't have a room or the room is not priced
+	 */
+	public Bill getBill(String guestName, int nights, PrintStream output) {
+		billRoom = getRoom(guestName);
+		if (billRoom == null && !(billRoom instanceof PricedRoom)) {
+			return null;
+		}
+		bill = new Bill(output);
+		
+		for (int i = 0; i < nights; i++) {
+			bill.newItem((PricedRoom) billRoom);
+		}
+		if (billRoom.getSafe() instanceof PricedSafe && billRoom.getSafe().isActive()) {
+			for (int i = 0; i < nights; i++) {
+				bill.newItem((PricedSafe) billRoom.getSafe());
+			}
+		}
+		return bill;
+	}
+	
 	// ------------------ Commands --------------------------
 	//@ requires pass != null;
 	//@ requires nameGuest != null;
@@ -92,30 +117,4 @@ public class Hotel {
 			//getRoom(nameGuest).setGuest(null);
 		}
 	}
-	
-	/**
-	 * 
-	 */
-	public Bill getBill(String guestName, int nights, PrintStream output) {
-		billRoom = getRoom(guestName);
-		if (billRoom == null && !(billRoom instanceof PricedRoom)) {
-			return null;
-		}
-		bill = new Bill(output);
-		
-		for (int i = 0; i < nights; i++) {
-			bill.newItem((PricedRoom) billRoom);
-		}
-		
-		
-		if (billRoom.getSafe() instanceof PricedSafe && billRoom.getSafe().isActive()) {
-			for (int i = 0; i < nights; i++) {
-				bill.newItem((PricedSafe) billRoom.getSafe());
-			}
-		}
-		
-		
-		return bill;
-	}
-	
 }
