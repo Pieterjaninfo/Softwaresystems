@@ -1,7 +1,5 @@
 package ss.week4;
 
-import java.lang.Object;
-import java.lang.reflect.Array;
 
 public class Exercises {
     public static int countNegativeNumbers(int[] arr) {
@@ -19,19 +17,19 @@ public class Exercises {
         // TODO: implement, see exercise P-4.2
     	int last;
     	int first;
-    	int length;
-    	length = ints.length / 2;
-    	for (int i = 0; i < length; i++) {
-    		for (int j = ints.length; j > length ; j++) {
-    			first = ints[i];
-    			last = ints[j];
-    			set(ints, i, last);
-    			set(ints, j, first);
-    		}
-    	}
+    	int halfLength;
+    	halfLength = ints.length / 2;
+    	int i = 0;
+    	int j = ints.length - 1;
     	
-    	
-    	
+    	while (i < halfLength && j >= halfLength) {
+    		first = ints[i];
+			last = ints[j];
+			ints[i] = last;
+			ints[j] = first;
+			i++;
+			j--;
+    	}    	
     }
 
     class SimpleList {

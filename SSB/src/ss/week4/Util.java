@@ -2,7 +2,7 @@ package ss.week4;
 
 import java.util.ArrayList;
 import java.util.List;
-// hey
+
 public class Util {
     public static <Element> List<Element> zip
     (List<Element> l1, List<Element> l2) {
