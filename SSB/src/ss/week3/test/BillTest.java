@@ -18,22 +18,21 @@ public class BillTest {
 	@Before
 	public void setUp() {
 		item = new BillItem("Item nr 1", cost);
-		item2 = new BillItem("Item", cost2);
-		bill = new Bill(null);
+		item2 = new BillItem("Item2", cost2);
+		bill = new Bill(System.out);
 	}
 	
 	@Test
 	public void testNewItem() {
 		bill.newItem(item);
-		System.out.println(bill.getSum() + "; " + cost);
-		assertEquals(cost, bill.getSum(), 0.001);
+		assertEquals(cost, bill.getSum(), 0);
 	}
 	
 	@Test
 	public void test2NewItem() {
 		bill.newItem(item);
 		bill.newItem(item2);
-		assertEquals(cost + cost2, bill.getSum(), 0.001);
+		assertEquals(cost + cost2, bill.getSum(), 0);
 	}
 	
 	@Test
