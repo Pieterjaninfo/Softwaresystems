@@ -63,7 +63,7 @@ public class Bill {
 
 	/**
 	 * Return the sum of the bill.
-	 * @return the total sum of all the items
+	 * @return sum the total sum of all the items
 	 */
 	public double getSum() {
 		return sum;

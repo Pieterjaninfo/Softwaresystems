@@ -93,6 +93,9 @@ public class Hotel {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	public Bill getBill(String guestName, int nights, PrintStream output) {
 		billRoom = getRoom(guestName);
 		if (billRoom == null && !(billRoom instanceof PricedRoom)) {

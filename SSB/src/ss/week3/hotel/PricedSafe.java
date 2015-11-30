@@ -26,7 +26,7 @@ public class PricedSafe extends Safe implements Bill.Item {
 	
 	/**
 	 * Returns the price of the safe.
-	 * @return price
+	 * @return price the price of this safe.
 	 */
 	public double getAmount() {
 		return price;
