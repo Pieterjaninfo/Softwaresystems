@@ -1,4 +1,4 @@
-package ss.week3.hotel;
+package ss.week3.hotel; //hey
 
 import java.io.PrintStream;
 import java.util.ArrayList;
