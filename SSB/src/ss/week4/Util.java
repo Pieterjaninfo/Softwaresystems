@@ -2,16 +2,14 @@ package ss.week4;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class Util {
-    public static <Element> List<Element> zip
-    (List<Element> l1, List<Element> l2) {
-        ArrayList<Element> RESULT = new ArrayList<Element>();
-        for (int i = 0; i<l1.size(); i++) {
-            RESULT.add(l1.get(i));
-            RESULT.add(l2.get(i));
+	public static <E> List<E> zip(List<E> l1, List<E> l2) {
+    	ArrayList<E> result = new ArrayList<E>();
+        for (int i = 0; i < l1.size(); i++) {
+            result.add(l1.get(i));
+            result.add(l2.get(i));
         }
-        return RESULT;
+        return result;
     }    
 
     /** signum function.
