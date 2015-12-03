@@ -18,7 +18,6 @@ public class Sum implements Function {
 	
 	@Override
 	public double apply(double value) {
-		// TODO Auto-generated method stub
 		return f1.apply(value) + f2.apply(value);
 	}
 
