@@ -4,13 +4,18 @@ public class LinearProduct extends Product {
 
 	//---------------- Instance variables ---------------------
 	
-		private Function f1;
-		private Function f2;
+	private Function f1;
+	private Function f2;
 		
 		//------------------- Constructor ------------------------
 		
-		public LinearProduct(Function function1, Function function2) {
-			f1 = function1;
-			f2 = function2;
-		}
+	public LinearProduct(Constant function1, Function function2) {
+		super(function1, function2);
+		f1 = function1;
+		f2 = function2;
+	}
+	
+	public Function derivative() {
+		return new Product(f1, f2.derivative());
+	}
 }
