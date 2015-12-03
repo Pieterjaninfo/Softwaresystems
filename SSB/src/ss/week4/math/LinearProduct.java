@@ -6,16 +6,29 @@ public class LinearProduct extends Product {
 	
 	private Function f1;
 	private Function f2;
+	private Boolean linear;
 		
 		//------------------- Constructor ------------------------
 		
-	public LinearProduct(Constant function1, Function function2) {
+	public LinearProduct(Function function1, Function function2) {
 		super(function1, function2);
-		f1 = function1;
-		f2 = function2;
+		linear = true;
+		if (function1 instanceof Constant) {
+			f1 = function1;
+			f2 = function2;
+		} else if (function2 instanceof Constant) {
+			f1 = function2;
+			f2 = function1;
+		} else {
+			linear = false;
+		}
+		
 	}
 	
 	public Function derivative() {
-		return new Product(f1, f2.derivative());
+		if (linear) {
+			return new LinearProduct((Constant) f1, f2.derivative());
+		}
+		return super.derivative();
 	}
 }
