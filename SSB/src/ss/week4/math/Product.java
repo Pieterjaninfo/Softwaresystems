@@ -1,5 +1,5 @@
 package ss.week4.math;
-import java.util.Formatter;
+
 
 public class Product implements Function {
 
