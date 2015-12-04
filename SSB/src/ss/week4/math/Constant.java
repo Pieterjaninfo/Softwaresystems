@@ -1,6 +1,6 @@
 package ss.week4.math;
 
-public class Constant implements Function {
+public class Constant implements Function, Integrandable {
 
 	//-------------------- Instance variables --------------------
 	
@@ -28,6 +28,15 @@ public class Constant implements Function {
 	public Function derivative() {
 		return new Constant(0);
 		
+	}
+	
+	/**
+	 * Calculates the integrand of a constant.
+	 * @return integrand The integrant funcion.	
+	 */
+	@Override
+	public Function integrand() {
+		return new LinearProduct(this, new Exponent(1));
 	}
 	
 	@Override

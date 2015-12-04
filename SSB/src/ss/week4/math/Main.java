@@ -15,6 +15,8 @@ public class Main {
 		doubles[3] = 4.0;*/
 		pol = new Polynomial(doubles);
 		System.out.println(pol.toString());
+		
+		System.out.println((double) 1 / 2);
 	}
 
 }
