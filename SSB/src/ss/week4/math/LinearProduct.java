@@ -20,6 +20,7 @@ public class LinearProduct extends Product {
 			f1 = function2;
 			f2 = function1;
 		} else {
+			System.out.println("Not a linear product, calculating using the normal product");
 			linear = false;
 		}
 		

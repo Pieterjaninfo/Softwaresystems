@@ -12,7 +12,11 @@ public class Polynomial implements Function {
 		this.constants = constants;
 	}
 	
-	
+	/**
+	 * Calculate the value of a polynomial for a given value.
+	 * @param value
+	 * @return double the value of the polynomial
+	 */
 	
 	@Override
 	public double apply(double value) {
@@ -24,12 +28,17 @@ public class Polynomial implements Function {
 		return result;
 	}
 
+	/**
+	 * Calculates the derivative of a given polynomial.
+	 * @return polynomial the derivative of the polynomial
+	 */
 	@Override
 	public Function derivative() {
-		for (int i = 0; i < constants.length; i++) {
-			
+		derivativeConstants[0] = 0;
+		for (int i = 0; i < constants.length - 1; i++) {
+			derivativeConstants[i + 1] = constants[i] * (constants.length - i - 1);
 		}
-		return null;
+		return new Polynomial(derivativeConstants);
 	}
 
 }
