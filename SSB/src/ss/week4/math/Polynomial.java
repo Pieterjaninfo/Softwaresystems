@@ -1,6 +1,6 @@
 package ss.week4.math;
 
-public class Polynomial implements Function {
+public class Polynomial implements Function, Integrandable {
 
 	private double[] constants;
 	private double result = 0;
@@ -29,5 +29,13 @@ public class Polynomial implements Function {
 			derivativeConstants[i + 1] = constants[i] * (constants.length - i - 1);
 		} 
 		return new Polynomial(derivativeConstants);
+	}
+	
+	@Override
+	public Function integrand() {
+		
+		
+		
+		return null;
 	}
 }
