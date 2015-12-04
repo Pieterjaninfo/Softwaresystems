@@ -33,8 +33,10 @@ public class Polynomial implements Function, Integrandable {
 	
 	@Override
 	public Function integrand() {
-		
-		
+		derivativeConstants[constants.length] = 0;
+		for (int i = 0; i < constants.length - 1; i++) {
+			derivativeConstants
+		}
 		
 		return null;
 	}
