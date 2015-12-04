@@ -1,6 +1,6 @@
 package ss.week4.math;
 
-public class Exponent implements Function {
+public class Exponent implements Function, Integrandable {
 
 	//---------------- Instance variables ------------------
 	
@@ -30,6 +30,11 @@ public class Exponent implements Function {
 	@Override
 	public String toString() {
 		return String.format("The exponent is: x^%s", n);
+	}
+	
+	@Override
+	public Function integrand() {
+		return new LinearProduct(new Constant(1 / (n + 1)), new Exponent(n + 1));
 	}
 
 }
