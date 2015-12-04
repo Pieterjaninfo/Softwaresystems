@@ -28,6 +28,6 @@ public class Polynomial implements Function {
 		for (int i = 0; i < constants.length - 1; i++) {
 			derivativeConstants[i + 1] = constants[i] * (constants.length - i - 1);
 		} 
-		return null;
+		return new Polynomial(derivativeConstants);
 	}
 }
