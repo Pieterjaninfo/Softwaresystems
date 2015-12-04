@@ -7,6 +7,7 @@ public class Polynomial implements Function {
 	private Function nextExponent;
 	private Function nextConstant;
 	private double[] derivativeConstants;
+	private String string;
 	
 	public Polynomial(double[] constants) {
 		this.constants = constants;
@@ -41,4 +42,12 @@ public class Polynomial implements Function {
 		return new Polynomial(derivativeConstants);
 	}
 
+	@Override
+	public String toString() {
+		String format = "%s %f(x^%d) +";
+		for (int i = 0; i < constants.length; i++) {
+			string = String.format(format, string, constants[i], constants.length - 1 - i); 
+		}
+		return string;
+	}
 }

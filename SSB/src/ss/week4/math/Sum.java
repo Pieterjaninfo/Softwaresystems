@@ -16,12 +16,18 @@ public class Sum implements Function {
 	
 	//----------------- Queries ------------------------
 	
+	/**
+	 * Calculates the sum of two functions.
+	 */
 	@Override
 	public double apply(double value) {
 		// TODO Auto-generated method stub
 		return f1.apply(value) + f2.apply(value);
 	}
 
+	/**
+	 * Calculates the derivative of the sum of two functions.
+	 */
 	@Override
 	public Function derivative() {
 		return new Sum(f1.derivative(), f2.derivative());

@@ -18,11 +18,17 @@ public class Product implements Function {
 	
 	//------------------- Queries -----------------------------
 	
+	/**
+	 * Calculates the value of a product.
+	 */
 	@Override
 	public double apply(double value) {
 		return f1.apply(value) * f2.apply(value);
 	}
 
+	/**
+	 * Calculates the derivative of the product of two functions.
+	 */
 	@Override
 	public Function derivative() {
 		p1 = new Product(f1, f2.derivative());
