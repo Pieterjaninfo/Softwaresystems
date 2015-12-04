@@ -1,6 +1,6 @@
 package ss.week4.math;
 
-public class Sum implements Function {
+public class Sum implements Function, Integrandable {
 
 	//---------------- Instance variables ---------------------
 	
@@ -31,6 +31,19 @@ public class Sum implements Function {
 	@Override
 	public Function derivative() {
 		return new Sum(f1.derivative(), f2.derivative());
+	}
+	
+	/**
+	 * Calculates the integrand of the sum of two functions if both are integrandable.
+	 * Else return null.
+	 */
+	@Override
+	public Function integrand() {
+		if (f1 instanceof Integrandable && f2 instanceof Integrandable) {
+			return new Sum(((Integrandable) f1).integrand(), ((Integrandable) f2).integrand());
+		}
+		return null;
+		
 	}
 	
 	@Override
