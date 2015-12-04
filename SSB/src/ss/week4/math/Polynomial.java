@@ -24,9 +24,10 @@ public class Polynomial implements Function {
 
 	@Override
 	public Function derivative() {
-		for (int i = 0; i < constants.length; i++) {
-			
-		}
-	return null;
+		derivativeConstants[0] = 0;
+		for (int i = 0; i < constants.length - 1; i++) {
+			derivativeConstants[i + 1] = constants[i] * (constants.length - i - 1);
+		} 
+		return null;
 	}
 }
