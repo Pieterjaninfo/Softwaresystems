@@ -1,6 +1,6 @@
 package ss.week4.math;
 
-public class LinearProduct extends Product {
+public class LinearProduct extends Product implements Integrandable {
 
 	//---------------- Instance variables ---------------------
 	
@@ -44,4 +44,16 @@ public class LinearProduct extends Product {
 		}
 		return super.derivative();
 	}
+	
+	/**
+	 * Calculates the interand of a linear product. If it is not linear 
+	 * or if the non-constant function is not integradable, it will return null .
+	 */
+	public Function integrand() {
+		if (linear && f2 instanceof Integrandable) {
+			return new LinearProduct((Constant) f1, ((Integrandable) f2).integrand());
+		}	
+		return null;
+	}
+
 }
