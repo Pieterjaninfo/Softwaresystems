@@ -59,9 +59,15 @@ public class Polynomial implements Function, Integrandable {
 
 	@Override
 	public String toString() {
-		String format = "%s %f(x^%d) +";
+		String format = "%s %s(x^%d) +";
 		for (int i = 0; i < constants.length; i++) {
-			string = String.format(format, string, constants[i], constants.length - 1 - i); 
+			if (string == null) {
+				string = String.format("%s(x^%d) +", constants[i], constants.length - 1 - i);
+			} else if (i == constants.length - 1) {
+				string = String.format("%s %s(x^%d)", string, constants[i], constants.length - 1 - i);
+			} else {
+				string = String.format(format, string, constants[i], constants.length - 1 - i);
+			}
 		}
 		return string;
 	}

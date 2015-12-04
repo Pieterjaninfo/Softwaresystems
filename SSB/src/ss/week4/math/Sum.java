@@ -48,7 +48,7 @@ public class Sum implements Function, Integrandable {
 	
 	@Override
 	public String toString() {
-		return String.format("The sum is: %s + %s.", f1.toString(), f2.toString());
+		return String.format("%s + %s", f1.toString(), f2.toString());
 	}
 
 

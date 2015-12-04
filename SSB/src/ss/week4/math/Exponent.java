@@ -46,6 +46,6 @@ public class Exponent implements Function, Integrandable {
 
 	@Override
 	public String toString() {
-		return String.format("The exponent is: x^%d", n);
+		return String.format("x^%d", n);
 	}
 }

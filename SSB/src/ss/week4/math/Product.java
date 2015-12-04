@@ -39,7 +39,7 @@ public class Product implements Function {
 	@Override
 	public String toString() {
 		//return "The product is: " + f1.toString() + " * " + f2.toString();
-		return String.format("The product is: %s * %s.", f1.toString(), f2.toString());
+		return String.format("%s * %s", f1.toString(), f2.toString());
 	}
 
 }

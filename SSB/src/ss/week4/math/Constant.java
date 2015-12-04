@@ -41,7 +41,7 @@ public class Constant implements Function, Integrandable {
 	
 	@Override
 	public String toString() {
-		return "The constant value is: " + constant;
+		return String.format("%s", constant);
 	}
 
 }
