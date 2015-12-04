@@ -8,15 +8,17 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Function pol;
-		double[] doubles = {1, 2, 3, 4};
-/*		doubles[0] = 1.0;
-		doubles[1] = 2.0;
-		doubles[2] = 3.0;
-		doubles[3] = 4.0;*/
-		pol = new Polynomial(doubles);
+		double[] doubles = {1, 3, 3, 7};
+
+		pol = new Polynomial(doubles).integrand();
 		System.out.println(pol.toString());
+		int[] array;
+		array = new int[20];
+		System.out.println(array + "; " + array.length);
 		
-		System.out.println((double) 1 / 2);
+		
+		
+		
 	}
 
 }

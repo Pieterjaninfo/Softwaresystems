@@ -7,10 +7,13 @@ public class Polynomial implements Function, Integrandable {
 	private Function nextExponent;
 	private Function nextConstant;
 	private double[] derivativeConstants;
+	private double[] integralConstants;
 	private String string;
 	
 	public Polynomial(double[] constants) {
 		this.constants = constants;
+		derivativeConstants = new double[constants.length];
+		integralConstants = new double[constants.length + 1];
 	}
 	
 	/**
@@ -42,15 +45,17 @@ public class Polynomial implements Function, Integrandable {
 		return new Polynomial(derivativeConstants);
 	}
 	
+	/**
+	 * Calculates the integrand of a polynomial.
+	 */
 	@Override
 	public Function integrand() {
-		derivativeConstants[constants.length] = 0;
-		for (int i = 0; i < constants.length - 1; i++) {
-			derivativeConstants[i] = constants[i] * (1 / (double) (constants.length - i));
+		integralConstants[constants.length] = 0;
+		for (int i = 0; i < constants.length; i++) {
+			integralConstants[i] = constants[i] * (1 / (double) (constants.length - i));
 		}
-		return new Polynomial(derivativeConstants);
+		return new Polynomial(integralConstants);
 	}
-
 
 	@Override
 	public String toString() {
