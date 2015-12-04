@@ -5,7 +5,7 @@ public class Polynomial implements Function {
 	private double[] constants;
 	private double result = 0;
 	private Function nextExponent;
-	private Function nextConstant;
+	private Constant nextConstant;
 	private double[] derivativeConstants;
 	
 	public Polynomial(double[] constants) {
@@ -24,6 +24,9 @@ public class Polynomial implements Function {
 
 	@Override
 	public Function derivative() {
-		return null;
+		for (int i = 0; i < constants.length; i++) {
+			
+		}
+	return null;
 	}
 }
