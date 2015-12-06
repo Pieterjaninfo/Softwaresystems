@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class MergeSortTest {
     @Test
     public void testMergesortEmptyList() {
-        List<Integer> sequence = new ArrayList<>(Collections.emptyList());
+        List<Integer> sequence = Collections.emptyList();
         MergeSort.mergesort(sequence);
         assertEquals(sequence, Collections.emptyList());
     }
