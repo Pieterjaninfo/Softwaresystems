@@ -29,6 +29,7 @@ public class Board {
      */
     //@ ensures (\forall int i; 0 <= i & i < DIM * DIM; this.getField(i) == Mark.EMPTY);
     public Board() {
+    	fields = new Mark[DIM * DIM];
     	for (int i = 0; isField(i); i++) {
     		fields[i] = Mark.EMPTY;
     	}
@@ -61,12 +62,12 @@ public class Board {
     public int index(int row, int col) {
     	// TODO: implement, see exercise P-4.18
     	assert isField(row, col);
-    	if (row == 1) {
-    		return col - 1;
-    	} else if (row == 2) {
-    		return col + 2;
+    	if (row == 0) {
+    		return col;
+    	} else if (row == 1) {
+    		return col + 3;
     	} else {
-    		return col + 5;
+    		return col + 6;
     	}
     }
 

@@ -14,7 +14,7 @@ public class Main {
 		System.out.println(pol.toString());
 		int[] array;
 		array = new int[20];
-		System.out.println(array + "; " + array.length);
+		System.out.println(array.length);
 		
 		
 		
