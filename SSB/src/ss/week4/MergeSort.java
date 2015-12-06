@@ -14,7 +14,28 @@ public class MergeSort {
     	List<E> res = new ArrayList<E>();
     	int fi = 0;
     	int si = 0;
+    	//List<E> olist = list;
+//		System.out.println("olist: " + olist);
 
+    	/* other way that doesnt work yet
+    	if (list.size() > 1) {
+    		fst = olist.subList(0, olist.size() / 2);
+    		snd = olist.subList(olist.size() / 2, olist.size());
+    		mergesort(fst);
+    		mergesort(snd);
+    		while (fi < fst.size() && si < snd.size()) {
+    			if (fst.get(fi).compareTo(snd.get(si)) < 0) {
+    				list.set(fi + si, fst.get(fi));
+    				fi++;
+    			} else {
+    				list.set(fi + si, snd.get(si));
+    				si++;
+    			}
+    		}
+    	}*/
+    	
+
+    	// Correct working way without proper return...
     	if (list.size() > 1) {
     		fst = list.subList(0, list.size() / 2);
     		snd = list.subList(list.size() / 2, list.size());
@@ -35,8 +56,9 @@ public class MergeSort {
     		} else if (si < snd.size()) {
     			res.addAll(snd.subList(si, snd.size()));
     		}
-    		list = res;
-    		System.out.println(res);
+    		for (int i = 0; i < list.size(); i++) {
+        		list.set(i, res.get(i));
+    		}
     	}
     }
 }
