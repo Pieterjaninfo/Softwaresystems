@@ -62,13 +62,15 @@ public class Board {
     public int index(int row, int col) {
     	// TODO: implement, see exercise P-4.18
     	assert isField(row, col);
+    	return (DIM * row) + col;
+    	/* too large and not scalable
     	if (row == 0) {
     		return col;
     	} else if (row == 1) {
     		return col + 3;
     	} else {
     		return col + 6;
-    	}
+    	}*/
     }
 
     /**
@@ -206,13 +208,26 @@ public class Board {
      */
     /*@ pure */
     public boolean hasRow(Mark m) {
+    	int i = 0;
+    	int j = 0;
+    	while (j < DIM && i < DIM) {
+    		if (getField(i, j) == m && j == DIM - 1) {
+    			return true;
+    		} else if (getField(i, j) == m) {
+    			j++;
+    		} else {
+    			j = 0;
+    			i++;
+    		}
+    	}
+    	/* not scalable and complicated
     	if (getField(0) == getField(1) && getField(2) == m && getField(2) == getField(0)) {
     		return true;
     	} else if (getField(3) == getField(4) && getField(5) == m && getField(5) == getField(3)) {
     		return true;
     	} else if (getField(6) == getField(7) && getField(8) == m && getField(8) == getField(6)) {
     		return true;
-    	}
+    	}*/
     	return false;
     }
 
@@ -226,13 +241,27 @@ public class Board {
      */
     /*@ pure */
     public boolean hasColumn(Mark m) {
+    	int i = 0;
+    	int j = 0;
+    	while (j < DIM && i < DIM) {
+    		if (getField(j, i) == m && j == DIM - 1) {
+    			return true;
+    		} else if (getField(j, i) == m) {
+    			j++;
+    		} else {
+    			j = 0;
+    			i++;
+    		}
+    	}
+    	
+    	/* not scalable and complicated
     	if (getField(0) == getField(3) && getField(6) == m && getField(6) == getField(0)) {
     		return true;
     	} else if (getField(1) == getField(4) && getField(7) == m && getField(7) == getField(1)) {
     		return true;
     	} else if (getField(2) == getField(5) && getField(8) == m && getField(8) == getField(2)) {
     		return true;
-    	}
+    	}*/
     	return false;
     }
 
@@ -246,13 +275,35 @@ public class Board {
      */
     /*@ pure */
     public boolean hasDiagonal(Mark m) {
+    	int i = 0;
+    	while (i < DIM) {
+    		if (getField(i, i) == m && i == DIM - 1) {
+    			return true;
+    		} else if (getField(i, i) == m) {
+    			i++;
+    		} else {
+    			i = DIM;
+    		}
+    	}
+    	i = 0;
+    	while (i < DIM) {
+    		if (getField(i, DIM - i - 1) == m && i == DIM - 1) {
+    			return true;
+    		} else if (getField(i, DIM - i - 1) == m) {
+    			i++;
+    		} else {
+    			i = DIM;
+    		}
+    	}
+    	
+    	/* not scalable and complicated
     	if (getField(4) == m) {
     		if (getField(0) == m && getField(0) == getField(8)) {
     			return true;
     		} else if (getField(6) == m && getField(6) == getField(2)) {
     			return true;
     		}
-    	}
+    	}*/
         return false;
     }
 
