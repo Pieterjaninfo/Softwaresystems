@@ -121,6 +121,7 @@ public class Game {
     private void play() {
     	current = 0;
     	boolean playing = true;
+    	update();
     	while (playing) {
     		/* overbodig
         	Mark currentMark = players[current].getMark();
