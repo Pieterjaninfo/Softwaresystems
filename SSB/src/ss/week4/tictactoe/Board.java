@@ -363,17 +363,15 @@ public class Board {
         for (int i = 0; i < DIM; i++) {
             String row = "";
             for (int j = 0; j < DIM; j++) {
-                //row = row + " " + getField(i, j).toString() + " ";
             	row = String.format("%s %5s ", row, getField(i, j).toString());
                 if (j < DIM - 1) {
                     row = row + "|";
                 }
             }
-            //s = s + row + DELIM + NUMBERING[i * 2];
             s = String.format("%s%s%s%s", s, row, DELIM, NUMBERING[i * 2]);
             if (i < DIM - 1) {
-                //s = s + "\n" + LINE + DELIM + NUMBERING[i * 2 + 1] + "\n";
-            	s = String.format("%s\n ----- + ----- + ----- %s%s\n", s, DELIM, NUMBERING[i * 2 + 1]);
+            	String format = "%s\n ----- + ----- + ----- %s%s\n";
+            	s = String.format(format, s, DELIM, NUMBERING[i * 2 + 1]);
             }
         }
         return s;
