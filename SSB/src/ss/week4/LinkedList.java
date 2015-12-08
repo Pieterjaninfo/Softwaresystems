@@ -30,7 +30,7 @@ public class LinkedList<Element> {
     }
 
     public Node findBefore(Element element) {
-        // TODO: implement, see exercise P-4.18
+    	//gg
     }
 
     //@ requires 0 <= index && index < this.size();

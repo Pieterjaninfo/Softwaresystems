@@ -18,13 +18,41 @@ public class DoublyLinkedList<Element> {
     //@ ensures this.size == \old(size) + 1;
     //@ ensures this.getNode(index).equals(element);
     public void add(int index, Element element) {
-        // TODO: implement, see exercise P-4.17
+    	assert element != null;
+    	assert 0 <= index && index <= this.size;
+    	Node newNode = new Node(element);
+    	if (index == 0) {
+    		getNode(0).previous = newNode;
+    		newNode.next = getNode(0);
+    		head.next = newNode;
+    	} else if (index == size()) {
+    		getNode(size() - 1).next = newNode;
+    		newNode.previous = getNode(size() - 1);
+    	} else {
+    		getNode(index).previous = newNode;
+    		newNode.next = getNode(index);
+    		newNode.previous = getNode(index - 1);
+    		getNode(index - 1).next = newNode;
+    	}
+    	head.previous = getNode(size - 1);
+    	size++;
     }
 
     //@ requires 0 <= index && index < this.size;
     //@ ensures this.size == \old(size) - 1;
     public void remove(int index) {
-        // TODO: implement, see exercise P-4.17
+    	assert 0 <= index && index < this.size;
+    	if (size == 1) {
+    		head.next = head;
+    		head.previous = head;
+    	} else if (index == 0) {
+    		getNode(index + 1).previous = getNode(index).previous;
+    		head.next = getNode(index + 1);
+    	} else {
+    		getNode(index + 1).previous = getNode(index - 1);
+    		getNode(index - 1).next = getNode(index + 1);
+    	}
+    	size--;
     }
 
     //@ requires 0 <= index && index < this.size;
@@ -66,5 +94,13 @@ public class DoublyLinkedList<Element> {
         public Element getElement() {
             return element;
         }
+    }
+    
+    public String toString() {
+    	String result = "";
+    	for (int i = 0; i < size(); i++) {
+    		result = result + "; " + get(i); 
+    	}
+    	return result;
     }
 }
