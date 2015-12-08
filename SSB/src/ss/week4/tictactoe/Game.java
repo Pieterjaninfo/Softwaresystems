@@ -122,6 +122,7 @@ public class Game {
     	current = 0;
     	boolean playing = true;
     	while (playing) {
+    		/* overbodig
         	Mark currentMark = players[current].getMark();
         	String answer;
         	do {
@@ -133,7 +134,9 @@ public class Game {
             } while (answer == null && isInteger(answer, 10));
         	
         	int chosenIndex = Integer.parseInt(answer, 10);
-        	board.setField(chosenIndex, currentMark);
+        	board.setField(chosenIndex, currentMark);*/
+        	
+        	players[current].makeMove(board);
         	update();
         	current = (current + 1) % NUMBER_PLAYERS;
         	if (board.gameOver()) {
@@ -141,8 +144,8 @@ public class Game {
         		playing = false;
         	}
     	}
-    }
-
+    } 
+    /* overbodig 
     private boolean isInteger(String s, int base) {
 		Scanner sc = new Scanner(s.trim());
 		boolean ints;
@@ -155,7 +158,7 @@ public class Game {
 		ints = !sc.hasNext();
 		sc.close();
 		return ints;
-	}
+	}*/
 
 	/**
      * Prints the game situation.
