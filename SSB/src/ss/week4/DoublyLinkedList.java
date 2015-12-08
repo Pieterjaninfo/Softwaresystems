@@ -25,6 +25,7 @@ public class DoublyLinkedList<Element> {
     		getNode(0).previous = newNode;
     		newNode.next = getNode(0);
     		head.next = newNode;
+    		newNode.previous = head;
     	} else if (index == size()) {
     		getNode(size() - 1).next = newNode;
     		newNode.previous = getNode(size() - 1);

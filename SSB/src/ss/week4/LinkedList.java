@@ -21,31 +21,27 @@ public class LinkedList<Element> {
             newNode.next = p.next;
             p.next = newNode;
         }
-        size = size + 1;
+        size++;
     }
 
     //@ ensures this.size == \old(size) - 1;
     public void remove(Element element) {
     	if (get(0) == element && size > 1) {
     		first = getNode(1);
-    	}
-    	if (get(0) == element && size == 1) {
+    	} else if (get(0) == element && size == 1) {
     		first = null;
-    	} //idk about the rest
-    	if (findBefore(element) != null ) {
-    		findBefore(element).next = null;
+    	} else if (findBefore(element) != null) {
+    		Node p = findBefore(element);
+    		p.next = p.next.next;
     	}
-    	if (findBefore(element) != null) {
-    		findBefore(element).next = null;
-    	}
-    	
+    	size--;
     }
 
     public Node findBefore(Element element) {
     	if (size == 0 || get(0) == element) {
     		return null;
     	}
-    	for (int j = 0; j < size; j++) {
+    	for (int j = 1; j < size; j++) {
     		if (get(j) == element) {
     			return getNode(j - 1);
     		}
