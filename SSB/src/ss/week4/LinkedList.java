@@ -31,8 +31,8 @@ public class LinkedList<Element> {
     	}
     	if (get(0) == element && size == 1) {
     		first = null;
-    	}
-    	if (findBefore(element) != null) {
+    	} //idk about the rest
+    	if (findBefore(element) != null ) {
     		findBefore(element).next = null;
     	}
     	if (findBefore(element) != null) {
