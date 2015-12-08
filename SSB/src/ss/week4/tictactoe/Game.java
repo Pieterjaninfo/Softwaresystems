@@ -2,6 +2,7 @@ package ss.week4.tictactoe;
 
 import java.util.Scanner;
 
+
 /**
  * Class for maintaining the Tic Tac Toe game. Lab assignment Module 2
  * 
@@ -118,10 +119,45 @@ public class Game {
      * the changed game situation is printed.
      */
     private void play() {
-        // TODO: implement, see P-4.20
+    	current = 0;
+    	boolean playing = true;
+    	while (playing) {
+        	Mark currentMark = players[current].getMark();
+        	String answer;
+        	do {
+                System.out.printf("Player %s's turn, please enter the index of your move!",
+                		  players[current].getName());
+                try (Scanner in = new Scanner(System.in)) {
+                    answer = in.hasNextLine() ? in.nextLine() : null;
+                }
+            } while (answer == null && isInteger(answer, 10));
+        	
+        	int chosenIndex = Integer.parseInt(answer, 10);
+        	board.setField(chosenIndex, currentMark);
+        	update();
+        	current = (current + 1) % NUMBER_PLAYERS;
+        	if (board.gameOver()) {
+        		printResult();
+        		playing = false;
+        	}
+    	}
     }
 
-    /**
+    private boolean isInteger(String s, int base) {
+		Scanner sc = new Scanner(s.trim());
+		boolean ints;
+		if (!sc.hasNextInt(10)) {
+			ints = false;
+			sc.close();
+			return ints;
+		}
+		sc.nextInt(10);
+		ints = !sc.hasNext();
+		sc.close();
+		return ints;
+	}
+
+	/**
      * Prints the game situation.
      */
     private void update() {
