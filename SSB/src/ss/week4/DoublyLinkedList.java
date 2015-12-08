@@ -34,8 +34,8 @@ public class DoublyLinkedList<Element> {
     		newNode.previous = getNode(index - 1);
     		getNode(index - 1).next = newNode;
     	}
-    	head.previous = getNode(size - 1);
     	size++;
+    	head.previous = getNode(size - 1);
     }
 
     //@ requires 0 <= index && index < this.size;
