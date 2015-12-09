@@ -80,12 +80,9 @@ public class Board {
     //@ ensures \result == (0 <= index && index < DIM * DIM);
     /*@pure*/
     public boolean isField(int index) {
-    	if (0 <= index && index < DIM * DIM) {
-    		return true;
-    	}
-        return false;
+    	return 0 <= index && index < DIM * DIM;
     }
-
+    
     /**
      * Returns true of the (row,col) pair refers to a valid field on the student.
      *
@@ -94,10 +91,7 @@ public class Board {
     //@ ensures \result == (0 <= row && row < DIM && 0 <= col && col < DIM);
     /*@pure*/
     public boolean isField(int row, int col) {
-    	if (0 <= row && row < DIM && 0 <= col && col < DIM) {
-    		return true;
-    	}
-        return false;
+    	return 0 <= row && row < DIM && 0 <= col && col < DIM;
     }
     
     /**
@@ -144,10 +138,7 @@ public class Board {
     /*@pure*/
     public boolean isEmptyField(int i) {
     	assert isField(i);
-    	if (getField(i) == Mark.EMPTY) {
-    		return true;
-    	}
-    	return false;
+    	return getField(i) == Mark.EMPTY;
     }
 
     /**
@@ -164,10 +155,7 @@ public class Board {
     /*@pure*/
     public boolean isEmptyField(int row, int col) {
     	assert isField(row, col);
-    	if (getField(row, col) == Mark.EMPTY) {
-    		return true;
-    	}
-        return false;
+    	return getField(row, col) == Mark.EMPTY;
     }
 
     /**
