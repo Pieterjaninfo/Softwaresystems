@@ -37,7 +37,9 @@ public class MapUtil {
     	return true;*/
     }
     
-    //@ ensures (\forall V v1; range.containsValue(V); (\exists K k1; map.containsKey(k1); V == map.get(k1)));
+    //@ requires map != null;
+    //@ requires range != null;
+    //@ ensures (\forall V v; range.contains(v); map.containsValue(v));
     public static <K, V> boolean isSurjectiveOnRange(Map<K, V> map, Set<V> range) {
     	for (V value : range) {
     		if (!map.containsValue(value)) {
@@ -46,17 +48,24 @@ public class MapUtil {
     	}
         return true;
     }
+    
     //elke key kan meerdere values hebben, vandaar set<K>.
+    
+    //@ requires map != null;
+    ///---@ ensures (\forall K k; map.keySet(); 
     public static <K, V> Map<V, Set<K>> inverse(Map<K, V> map) {
         // TODO: implement, see exercise P-5.3
     	
     	Map<V, Set<K>> result = new HashMap<V, Set<K>>();
-    	for (K key : map.keySet()) {
-    		
-    		
+   		for (K key : map.keySet()) {
+   			V value = map.get(key);
+   			if (!result.containsKey(value)) {
+   				result.put(value, new HashSet<K>());
+   			}
+   			result.get(value).add(key);
     	}
     	
-    	return null;
+    	return result;
 	}
 	public static <K, V> Map<V, K> inverseBijection(Map<K, V> map) {
         // TODO: implement, see exercise P-5.3
