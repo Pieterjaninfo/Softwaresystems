@@ -30,7 +30,9 @@ public class Board {
     //@ ensures (\forall int i; 0 <= i & i < DIM * DIM; this.getField(i) == Mark.EMPTY);
     public Board() {
     	fields = new Mark[DIM * DIM];
-    	reset();
+    	for (int i = 0; isField(i); i++) {
+    		fields[i] = Mark.EMPTY;
+    	}
     }
 
     /**

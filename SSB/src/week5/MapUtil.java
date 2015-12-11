@@ -8,12 +8,6 @@ import java.util.Set;
 public class MapUtil {
     public static <K, V> boolean isOneOnOne(Map<K, V> map) {
         // TODO: implement, see exercise P-5.1
-    	//@\forall(x1, x2) =------------------
-    	for (int i = 0; i < map.size(); i++) {
-    		if (containsValue()) {
-    			
-    		}
-    	}
         return false;
     }
     public static <K, V> 

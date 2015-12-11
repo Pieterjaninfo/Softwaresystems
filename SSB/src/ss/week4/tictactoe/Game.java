@@ -120,8 +120,9 @@ public class Game {
      */
     private void play() {
     	current = 0;
+    	boolean playing = true;
     	update();
-    	while (!board.gameOver()) {
+    	while (playing) {
     		/* overbodig
         	Mark currentMark = players[current].getMark();
         	String answer;
@@ -139,8 +140,11 @@ public class Game {
         	players[current].makeMove(board);
         	update();
         	current = (current + 1) % NUMBER_PLAYERS;
+        	if (board.gameOver()) {
+        		printResult();
+        		playing = false;
+        	}
     	}
-    	printResult();
     } 
     /* overbodig 
     private boolean isInteger(String s, int base) {
