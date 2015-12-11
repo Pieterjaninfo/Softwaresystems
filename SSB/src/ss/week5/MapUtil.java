@@ -4,17 +4,26 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.Iterator;
 
 public class MapUtil {
+	
     public static <K, V> boolean isOneOnOne(Map<K, V> map) {
         // TODO: implement, see exercise P-5.1
-    	//@\forall(x1, x2) =------------------
-    	for (int i = 0; i < map.size(); i++) {
-    		if (containsValue()) {
-    			
+    	Set<K> keys = map.keySet();
+    	
+    	Iterator<K> ix = keys.iterator();
+    	
+    	while (ix.hasNext()) {
+    		K key = ix.next();
+    		V value = map.get(key);
+    		ix.remove();
+    		map.remove(key);
+    		if (map.containsValue(value)) {
+    			return false;
     		}
     	}
-        return false;
+    	return true;
     }
     public static <K, V> 
            boolean isSurjectiveOnRange(Map<K, V> map, Set<V> range) {
