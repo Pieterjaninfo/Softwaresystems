@@ -68,12 +68,14 @@ public class HumanPlayer extends Player {
         boolean intRead = false;
         @SuppressWarnings("resource")
         Scanner line = new Scanner(System.in);
+        
         do {
             System.out.print(prompt);
             try (Scanner scannerLine = new Scanner(line.nextLine());) {
                 if (scannerLine.hasNextInt()) {
                     intRead = true;
                     value = scannerLine.nextInt();
+                    scannerLine.close();
                 }
             }
         } while (!intRead);

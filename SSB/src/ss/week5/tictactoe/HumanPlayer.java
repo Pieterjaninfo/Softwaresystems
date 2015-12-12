@@ -1,5 +1,6 @@
 package ss.week5.tictactoe;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -69,13 +70,13 @@ public class HumanPlayer extends Player {
         @SuppressWarnings("resource")
         Scanner line = new Scanner(System.in);
         do {
-            System.out.print(prompt);
-            try (Scanner scannerLine = new Scanner(line.nextLine());) {
-                if (scannerLine.hasNextInt()) {
-                    intRead = true;
-                    value = scannerLine.nextInt();
-                }
-            }
+        	System.out.print(prompt);
+        	try (Scanner scannerLine = new Scanner(line.nextLine());) {
+        		if (scannerLine.hasNextInt()) {
+        			intRead = true;
+        			value = scannerLine.nextInt();
+        		}
+           	}
         } while (!intRead);
         return value;
     }
