@@ -64,16 +64,39 @@ public class MapUtil {
     	}
         return res;
 	}
+    
 	public static <K, V> Map<V, K> inverseBijection(Map<K, V> map) {
-        // TODO: implement, see exercise P-5.3
-        return null;
+		assert isOneOnOne(map);
+		Map<V, K> res = new HashMap<V, K>();
+		for (K key: map.keySet()) {
+			res.put(map.get(key), key);
+		}
+        return res;
 	}
+	
 	public static <K, V, W> boolean compatible(Map<K, V> f, Map<V, W> g) {
-        // TODO: implement, see exercise P-5.4
-        return false;
+		Collection<V> values = f.values();
+		Set<V> keys = g.keySet();
+		for (V value : values) {
+			if (!keys.contains(value)) {
+				return false;
+			}
+		}
+		return true;
 	}
+	
 	public static <K, V, W> Map<K, W> compose(Map<K, V> f, Map<V, W> g) {
-        // TODO: implement, see exercise P-5.5
-        return null;
+		assert compatible(f, g);
+		Set<K> keysf = f.keySet();
+		Set<V> keysg = g.keySet();
+		Map<K, W> res = new HashMap<K, W>();
+		for (K keyf: keysf) {
+			for (V keyg: keysg) {
+				if (f.get(keyf) == keyg) {
+					res.put(keyf, g.get(keyg));
+				}
+			}
+		}
+		return res;
 	}
 }
