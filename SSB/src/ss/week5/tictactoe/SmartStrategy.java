@@ -31,7 +31,7 @@ public class SmartStrategy implements Strategy {
 		}
 		for (int field: emptyFields) {
 			Board testBoard = b.deepCopy();
-			testBoard.setField(field, m);
+			testBoard.setField(field, m.other());
 			if (testBoard.hasWinner()) {
 				return field;
 			}
