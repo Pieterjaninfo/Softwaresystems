@@ -6,7 +6,7 @@ public class ComputerPlayer extends Player {
 	private Mark mark;
 
 	public ComputerPlayer(Mark mark, Strategy strategy) {
-		super(strategy + "-" + mark, mark);
+		super(strategy.getName() + "-" + mark, mark);
 		this.strategy = strategy;
 		this.mark = mark;
 	}
