@@ -14,8 +14,10 @@ public class Words {
 		do {
 			System.out.print("Line (or \"end\"):");
 		
+			@SuppressWarnings("resource")
 			Scanner lineScan = new Scanner(in.nextLine());
 			if (lineScan.hasNext("end")) {
+				lineScan.close();
 				break;
 			}
 

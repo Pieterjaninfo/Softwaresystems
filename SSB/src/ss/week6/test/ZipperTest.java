@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import ss.week6.ArgumentLengthsDifferException;
 import ss.week6.TooFewArgumentsException;
+import ss.week6.WrongArgumentException;
 import ss.week6.Zipper;
 
 import static org.junit.Assert.assertEquals;
@@ -28,7 +29,7 @@ public class ZipperTest {
      * Test for zipping with too few arguments
      */
     @Test(expected=TooFewArgumentsException.class)
-    public void testFirstArgumentNull() throws TooFewArgumentsException, ArgumentLengthsDifferException {
+    public void testFirstArgumentNull() throws TooFewArgumentsException, ArgumentLengthsDifferException, WrongArgumentException {
         zipper.zip2(null, "Hello World!");
     }
 
@@ -36,7 +37,7 @@ public class ZipperTest {
      * Test for zipping with too few arguments
      */
     @Test(expected=TooFewArgumentsException.class)
-    public void testSecondArgumentNull() throws TooFewArgumentsException, ArgumentLengthsDifferException {
+    public void testSecondArgumentNull() throws TooFewArgumentsException, ArgumentLengthsDifferException, WrongArgumentException {
         zipper.zip2("Hello World!", null);
     }
 
@@ -44,12 +45,12 @@ public class ZipperTest {
      * Test for zipping with arguments of different length
      */
     @Test(expected=ArgumentLengthsDifferException.class)
-    public void testDifferentArgumentLengths() throws ArgumentLengthsDifferException, TooFewArgumentsException {
+    public void testDifferentArgumentLengths() throws ArgumentLengthsDifferException, TooFewArgumentsException, WrongArgumentException {
         zipper.zip2("Hello World!", "Hello World");
     }
 
     @Test
-    public void testCorrectInput() throws ArgumentLengthsDifferException, TooFewArgumentsException {
+    public void testCorrectInput() throws ArgumentLengthsDifferException, TooFewArgumentsException, WrongArgumentException {
         assertEquals("HelloWorld", zipper.zip2("Hlool", "elWrd"));
     }
 
