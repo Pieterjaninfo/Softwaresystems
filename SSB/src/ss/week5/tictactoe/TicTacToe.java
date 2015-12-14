@@ -51,11 +51,9 @@ public class TicTacToe {
                 	break;
             	} catch (ClassNotFoundException e) {
             		System.out.println("Strategy doesn't exist.");
-            	} catch (InstantiationException e) {
-
-				} catch (IllegalAccessException e) {
-
-				}
+            	} catch (InstantiationException | IllegalAccessException e) {
+            		System.out.println("Error with class acces");
+				} 
             } else {
            		s1 = new HumanPlayer(answer[1], Mark.XX);
            		break;
