@@ -28,21 +28,22 @@ public class CardReader {
 	private static Card read() throws EOFException {
 		if (reader != null) {
 			return Card.read(reader);
-		} else if (dataIn != null) {
+		} /*else if (dataIn != null) {
 			return Card.read(dataIn);
 		} else {
 			return Card.read(objectIn);
-		}
+		}*/
+		return null;
 	}
 
 	private static void write(Card k) throws IOException {
 		if (writer != null) {
 			k.write(writer);
-		} else if (dataOut != null) {
+		} /* else if (dataOut != null) {
 			k.write(dataOut);
 		} else {
 			k.write(objectOut);
-		}
+		}*/
 	}
 
 	private static void close() {
@@ -71,7 +72,7 @@ public class CardReader {
 	public static void main(String[] args) {
 		if (args.length != 2) {
 			System.err.println("Usage: java CardReader "
-					+ "[<filename>|-] [<filename>|-]");
+		  			  + "[<filename>|-] [<filename>|-]");
 			return;
 		}
 

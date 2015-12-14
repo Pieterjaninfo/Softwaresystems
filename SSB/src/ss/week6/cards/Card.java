@@ -1,7 +1,14 @@
 package ss.week6.cards;
 
-public class Card
-{
+import java.io.BufferedReader;
+import java.io.EOFException;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+public class Card {
 
 	// ---- constants -----------------------------------
 
@@ -36,8 +43,9 @@ public class Card
 	 */
 	private static String rankChar2String(char rank) {
 		int i;
-		for (i = 0; i < 13 && RANK_CHARACTERS[i] != rank; i++)
-			;
+		for (i = 0; i < 13 && RANK_CHARACTERS[i] != rank; i++){
+			
+		}
 		return (i == 13) ? null : RANK_STRINGS[i];
 	}
 
@@ -49,8 +57,9 @@ public class Card
 	 */
 	private static String suitChar2String(char suit) {
 		int i;
-		for (i = 0; i < 4 && SUIT_CHARACTERS[i] != suit; i++)
-			;
+		for (i = 0; i < 4 && SUIT_CHARACTERS[i] != suit; i++) {
+			
+		}
 		return (i == 4) ? null : SUIT_STRINGS[i];
 	}
 
@@ -62,8 +71,9 @@ public class Card
 	 */
 	private static char rankString2Char(String rank) {
 		int i;
-		for (i = 0; i < 13 && !(RANK_STRINGS[i].equals(rank)); i++)
-			;
+		for (i = 0; i < 13 && !(RANK_STRINGS[i].equals(rank)); i++) {
+			
+		}
 		return (i == 13) ? '?' : RANK_CHARACTERS[i];
 	}
 
@@ -75,8 +85,10 @@ public class Card
 	 */
 	private static char suitString2Char(String suit) {
 		int i;
-		for (i = 0; i < 4 && !(SUIT_STRINGS[i].equals(suit)); i++)
-			;
+		for (i = 0; i < 4 && !(SUIT_STRINGS[i].equals(suit)); i++) {
+			
+		}
+		
 		return (i == 4) ? '?' : SUIT_CHARACTERS[i];
 	}
 
@@ -131,8 +143,10 @@ public class Card
 	 */
 	public static boolean rankLessThan(char r1, char r2) {
 		int i;
-		for (i = 0; RANK_CHARACTERS[i] != r1 && RANK_CHARACTERS[i] != r2; i++)
-			;
+		for (i = 0; RANK_CHARACTERS[i] != r1 && RANK_CHARACTERS[i] != r2; i++) {
+			
+		}
+			
 		return RANK_CHARACTERS[i] == r2 ? false : RANK_CHARACTERS[i] == r1;
 	}
 
@@ -320,4 +334,107 @@ public class Card
 	public boolean isInRankBefore(Card card) {
 		return isRankFollowing(this.getRank(), card.getRank());
 	}
+	
+	public void write(PrintWriter p) {
+		p.write(this.toString() + "\n");
+		p.flush();
+	}
+	
+	
+	public static void main(String[] args) {
+		Card c1 = new Card('C', '2');
+		Card c2 = new Card('H', 'A');
+		Card c3 = new Card('S', '7');
+		Card c4 = new Card('C', 'J');
+		Card c5 = new Card('D', '5');
+		PrintWriter p;
+		try {
+			//PrintWriter p = new PrintWriter("/home/bart/cardfile.txt");
+			p = new PrintWriter(args[0]);
+			System.out.println("printed to file");
+		} catch (ArrayIndexOutOfBoundsException e) {
+			p = new PrintWriter(System.out);
+			System.out.println("printed to System.out");
+		} catch (FileNotFoundException e) {
+			System.out.println("file incorrect");
+			p = null;
+		} 
+		c1.write(p);
+		c2.write(p);
+		c3.write(p);
+		c4.write(p);
+		c5.write(p);
+		c1.write(p);
+		c2.write(p);
+		c3.write(p);
+		c4.write(p);
+		c5.write(p);
+	}
+	
+	public static Card read(BufferedReader in) throws EOFException {
+		String inputLine;
+		Scanner line;
+		String suit;
+		String rank;
+		char s;
+		char r;
+		
+		try {
+			inputLine = in.readLine();
+			while (inputLine != null) {
+				line = new Scanner(inputLine);
+				suit = line.next();
+				
+				switch (suit) {
+					case "Clubs":
+						s = 'C';
+						break;
+					case "Diamonds":
+						s = 'D';
+						break;
+					case "Hearts":
+						s = 'H';
+						break;
+					default:
+						s = 'S';
+				}
+				rank = line.next();
+				
+				switch (rank) {
+					case "ten":
+						r = 'T';
+						break;
+					case "jack":
+						r = 'J';
+						break;
+					case "queen":
+						r = 'Q';
+						break;
+					case "king":
+						r = 'K';
+						break;
+					case "ace":
+						r = 'A';
+						break;
+					default:
+						r = rank.charAt(0);
+				}
+				line.close();
+				return new Card(s, r);
+			}
+			throw new EOFException();
+				
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("No argument given");
+		} catch (IOException e) {
+			throw new EOFException();
+		}
+		return null;
+	}
+	
+	
+	
+	
+	
+	
 }
