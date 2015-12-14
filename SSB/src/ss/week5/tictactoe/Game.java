@@ -94,12 +94,14 @@ public class Game {
      */
     private boolean readBoolean(String prompt, String yes, String no) {
         String answer;
+        //Scanner in = new Scanner(System.in);
         do {
             System.out.print(prompt);
-            try (Scanner in = new Scanner(System.in)) {
-                answer = in.hasNextLine() ? in.nextLine() : null;
-            }
+            
+            answer = TicTacToe.in.hasNextLine() ? TicTacToe.in.nextLine() : null;
+           
         } while (answer == null || (!answer.equals(yes) && !answer.equals(no)));
+        //in.close();
         return answer.equals(yes);
     }
 

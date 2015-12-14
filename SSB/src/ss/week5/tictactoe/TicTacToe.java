@@ -10,6 +10,8 @@ import java.util.Scanner;
  * @version $Revision: 1.4 $
  */
 public class TicTacToe {
+	
+	public static Scanner in = new Scanner(System.in);
     
 
 	public static void main(String[] args) {
@@ -18,7 +20,6 @@ public class TicTacToe {
 		Player s1 = null;
     	String tester;
     	String[] answer = {null, null};
-    	Scanner in = new Scanner(System.in);
         do {
             System.out.print("Please enter the name of player one.");
             try {
