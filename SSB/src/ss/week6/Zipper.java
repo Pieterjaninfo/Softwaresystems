@@ -14,6 +14,18 @@ public class Zipper {
         return result;
     }
     
+    /**
+     * zips two strings of equal size.
+     * if s1 or s1 is null or they don't have the same length an exception will be thrown
+     * @param s1
+     * @param s2
+     * @return
+     * @throws WrongArgumentException
+     */
+    /*@
+    requires s1 != null & s2 != null;
+    requires s1.length() == s2.length();
+  */
     public static String zip2(String s1, String s2) throws WrongArgumentException {
     	if (s1 == null || s2 == null) {
     		throw new TooFewArgumentsException();

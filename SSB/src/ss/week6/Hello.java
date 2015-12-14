@@ -6,6 +6,10 @@ public class Hello {
 
 	private static String input;
 	
+	/**
+	 * prints "Hello %s" where the string is the input from the user.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		do {

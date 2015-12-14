@@ -6,6 +6,11 @@ public class Words {
 	
 	private static String input;
 
+	/**
+	 * Prints each word of a string on a new line.
+	 * If the string starts with "end" the program will end. 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		Scanner in = new Scanner(System.in);
