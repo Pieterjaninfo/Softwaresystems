@@ -12,15 +12,15 @@ public class SmartStrategy implements Strategy {
 	}
 	
 	public int determineMove(Board b, Mark m) {
+		int mid = Board.DIM / 2;
+		if (b.isEmptyField(mid, mid)) {
+			return b.index(mid, mid);
+		}
 		emptyFields.clear();
 		for (int i = 0; b.isField(i); i++) {
 			if (b.isEmptyField(i)) {
 				emptyFields.add(i);
 			}
-		}
-		int mid = Board.DIM / 2;
-		if (b.isEmptyField(mid, mid)) {
-			return b.index(mid, mid);
 		}
 		for (int field: emptyFields) {
 			Board testBoard = b.deepCopy();

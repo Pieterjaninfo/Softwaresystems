@@ -1,10 +1,14 @@
 package ss.week6.cards;
 
 import java.io.BufferedReader;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
 import java.io.EOFException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -348,6 +352,7 @@ public class Card {
 		Card c4 = new Card('C', 'J');
 		Card c5 = new Card('D', '5');
 		PrintWriter p;
+		
 		try {
 			//PrintWriter p = new PrintWriter("/home/bart/cardfile.txt");
 			p = new PrintWriter(args[0]);
@@ -364,63 +369,17 @@ public class Card {
 		c3.write(p);
 		c4.write(p);
 		c5.write(p);
-		c1.write(p);
 		c2.write(p);
-		c3.write(p);
-		c4.write(p);
 		c5.write(p);
 	}
 	
 	public static Card read(BufferedReader in) throws EOFException {
 		String inputLine;
-		Scanner line;
-		String suit;
-		String rank;
-		char s;
-		char r;
-		
 		try {
 			inputLine = in.readLine();
 			while (inputLine != null) {
-				line = new Scanner(inputLine);
-				suit = line.next();
-				
-				switch (suit) {
-					case "Clubs":
-						s = 'C';
-						break;
-					case "Diamonds":
-						s = 'D';
-						break;
-					case "Hearts":
-						s = 'H';
-						break;
-					default:
-						s = 'S';
-				}
-				rank = line.next();
-				
-				switch (rank) {
-					case "ten":
-						r = 'T';
-						break;
-					case "jack":
-						r = 'J';
-						break;
-					case "queen":
-						r = 'Q';
-						break;
-					case "king":
-						r = 'K';
-						break;
-					case "ace":
-						r = 'A';
-						break;
-					default:
-						r = rank.charAt(0);
-				}
-				line.close();
-				return new Card(s, r);
+				char[] res = stringToCodeFromLine(inputLine);
+				return new Card(res[0], res[1]);
 			}
 			throw new EOFException();
 				
@@ -432,8 +391,110 @@ public class Card {
 		return null;
 	}
 	
+	public static char[] stringToCodeFromLine(String inputLine) {
+		char[] res = {'a', 'a'};
+		char s;
+		char r;
+		String rank;
+		String suit;
+		Scanner line = new Scanner(inputLine);
+		suit = line.next();
+		switch (suit) {
+			case "Clubs":
+				s = 'C';
+				break;
+			case "Diamonds":
+				s = 'D';
+				break;
+			case "Hearts":
+				s = 'H';
+				break;
+			default:
+				s = 'S';
+		}
+		rank = line.next();
 	
+		switch (rank) {
+			case "ten":
+				r = 'T';
+				break;
+			case "jack":
+				r = 'J';
+				break;
+			case "queen":
+				r = 'Q';
+				break;
+			case "king":
+				r = 'K';
+				break;
+			case "ace":
+				r = 'A';
+				break;
+			default:
+				r = rank.charAt(0);
+		}
+		line.close();
+		res[0] = s;
+		res[1] = r;
+		return res;
 	
+	}
+	
+	public static Card read(DataInput in) throws EOFException {
+		String inputLine;
+		try {
+			inputLine = in.readLine();
+			while (inputLine != null) {
+				char[] res = stringToCodeFromLine(inputLine);
+				return new Card(res[0], res[1]);
+			}
+			throw new EOFException();
+				
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("No argument given");
+		} catch (IOException e) {
+			throw new EOFException();
+		}
+		return null;
+	}
+	
+	/**
+	 * wirtes the string of the card to the DataOutput.
+	 * @param out
+	 */
+	public void write(DataOutput out) {
+		try {
+			out.writeBytes(this.toString() + "\n");
+		} catch (IOException e) {
+			System.out.println("some io exception in write(Dataoutut out)");
+		}
+	}
+	
+	public static Card read(ObjectInput in) throws EOFException{
+		String inputLine;
+		try {
+			inputLine = in.readLine();
+			while (inputLine != null) {
+				char[] res = stringToCodeFromLine(inputLine);
+				return new Card(res[0], res[1]);
+			}
+			throw new EOFException();
+				
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("No argument given");
+		} catch (IOException e) {
+			throw new EOFException();
+		}
+		return null;
+	}
+	
+	public void write(ObjectOutput out) {
+		try {
+			out.writeBytes(this.toString() + "\n");
+		} catch (IOException e) {
+			System.out.println("some io exception in write(Dataoutut out)");
+		}
+	}
 	
 	
 	

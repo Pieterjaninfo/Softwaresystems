@@ -12,7 +12,6 @@ import java.util.Scanner;
 public class TicTacToe {
 	
 	public static Scanner in = new Scanner(System.in);
-    
 
 	public static void main(String[] args) {
 		//System.out.println(3 / 2);

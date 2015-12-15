@@ -13,7 +13,7 @@ public class Hello {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		do {
-			System.out.print("Name:");
+			System.out.print("Name: ");
 			input = in.nextLine();
 			if (input.isEmpty()) {
 				break;
@@ -22,7 +22,7 @@ public class Hello {
 		} while (true);
 
 		in.close();
-		System.out.println("quited");
+		System.out.println("Program stopped");
 	}	
 }
 

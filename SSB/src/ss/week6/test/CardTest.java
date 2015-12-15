@@ -48,7 +48,6 @@ public class CardTest {
 
     
     /** Test for writing and reading a card with data files.*/
-    /*
     @Test
     public void testReadingWritingData() {
         try {
@@ -65,9 +64,8 @@ public class CardTest {
             e.printStackTrace();
         }
     }
-*/
+
     /** Test for writing and reading a card with object files.*/
-    /*
     @Test
     public void testReadingWritingObject() {
         try {
@@ -83,5 +81,5 @@ public class CardTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 }

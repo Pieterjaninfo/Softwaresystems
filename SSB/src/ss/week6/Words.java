@@ -17,7 +17,7 @@ public class Words {
 		int i = 0;
 		
 		do {
-			System.out.print("Line (or \"end\"):");
+			System.out.print("Line (or \"end\"): ");
 		
 			@SuppressWarnings("resource")
 			Scanner lineScan = new Scanner(in.nextLine());
