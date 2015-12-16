@@ -338,13 +338,19 @@ public class Card {
 	public boolean isInRankBefore(Card card) {
 		return isRankFollowing(this.getRank(), card.getRank());
 	}
-	
+	/**
+	 * writes string to the PrintWriter.
+	 * @param p PrintWriter.
+	 */
 	public void write(PrintWriter p) {
 		p.write(this.toString() + "\n");
 		p.flush();
 	}
 	
-	
+	/**
+	 * creates a file with a couple of cards in .txt file.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Card c1 = new Card('C', '2');
 		Card c2 = new Card('H', 'A');
@@ -372,7 +378,13 @@ public class Card {
 		c2.write(p);
 		c5.write(p);
 	}
-	
+	/**
+	 * Read from Buffer.
+	 * Throws EOFException if finished.
+	 * @param in BufferedReader from where the string needs to be read.
+	 * @return
+	 * @throws EOFException
+	 */
 	public static Card read(BufferedReader in) throws EOFException {
 		String inputLine;
 		try {
@@ -390,7 +402,13 @@ public class Card {
 		}
 		return null;
 	}
-	
+	/**
+	 * From an String will return the coded card char[]:
+	 * char[0] is the suit of the card in code
+	 * char[1] is the rank of the card in code.
+	 * @param inputLine String that needs to be changed in the codes for a card.
+	 * @return
+	 */
 	public static char[] stringToCodeFromLine(String inputLine) {
 		char[] res = {'a', 'a'};
 		char s;
@@ -439,7 +457,13 @@ public class Card {
 		return res;
 	
 	}
-	
+	/**
+	 * Reads card from DataInput.
+	 * If finished throws EOFException.
+	 * @param in Datainput from where the string will be read.
+	 * @return
+	 * @throws EOFException
+	 */
 	public static Card read(DataInput in) throws EOFException {
 		String inputLine;
 		try {
@@ -460,7 +484,7 @@ public class Card {
 	
 	/**
 	 * wirtes the string of the card to the DataOutput.
-	 * @param out
+	 * @param out DataOutput to where the string will be written.
 	 */
 	public void write(DataOutput out) {
 		try {
@@ -470,6 +494,13 @@ public class Card {
 		}
 	}
 	
+	/**
+	 * reads from ObjectInput.
+	 * If it is done throws EOFException.
+	 * @param in ObjectInput from where the string will be read.
+	 * @return
+	 * @throws EOFException
+	 */
 	public static Card read(ObjectInput in) throws EOFException{
 		String inputLine;
 		try {
@@ -488,6 +519,10 @@ public class Card {
 		return null;
 	}
 	
+	/**
+	 * write a card string to the ObjectOutput.
+	 * @param out ObjectOutput to where the string will be written.
+	 */
 	public void write(ObjectOutput out) {
 		try {
 			out.writeBytes(this.toString() + "\n");
