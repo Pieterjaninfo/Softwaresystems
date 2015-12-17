@@ -1,6 +1,6 @@
 package ss.week6.cards;
 
-import java.io.BufferedReader;
+/*import java.io.BufferedReader;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.DataOutputStream;
@@ -9,7 +9,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
-import java.io.PrintWriter;
+import java.io.PrintWriter;*/
+import java.io.*;
 import java.util.Scanner;
 
 public class Card {
@@ -410,7 +411,7 @@ public class Card {
 	 * @return
 	 */
 	public static char[] stringToCodeFromLine(String inputLine) {
-		char[] res = {'a', 'a'};
+		char[] res = new char[2];
 		char s;
 		char r;
 		String rank;
@@ -433,7 +434,7 @@ public class Card {
 		rank = line.next();
 	
 		switch (rank) {
-			case "ten":
+			case "10":
 				r = 'T';
 				break;
 			case "jack":

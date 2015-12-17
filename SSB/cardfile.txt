@@ -1,0 +1,7 @@
+Clubs 2
+Hearts ace
+Spades 7
+Clubs jack
+Diamonds 5
+Hearts ace
+Diamonds 5
