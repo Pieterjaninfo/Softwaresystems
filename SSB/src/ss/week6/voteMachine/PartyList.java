@@ -15,6 +15,7 @@ public class PartyList {
 	public boolean addParty(String party) {
 		if (!parties.contains(party)) {
 			parties.add(party);
+			VoteList.addVote(party);
 			return true;
 		}
 		return false;
@@ -24,7 +25,7 @@ public class PartyList {
 		return parties;
 	}
 	
-	public boolean hasParty(String party) {
+	public static boolean hasParty(String party) {
 		return parties.contains(party);
 	}
 	

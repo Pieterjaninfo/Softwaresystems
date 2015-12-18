@@ -1,11 +1,11 @@
 package ss.week6.voteMachine;
 
-public class Controller {
+public class VoteMachine {
 	
 	private PartyList parties;
 	private VoteList votes;
 	
-	public Controller() {
+	public VoteMachine() {
 		parties = new PartyList();
 		votes = new VoteList();
 	}
@@ -16,7 +16,12 @@ public class Controller {
 	public static void main(String[] args) {
 		
 		VoteMachine voteMachine = new VoteMachine();
-		voteMachine.start();	
+		VoteTUIView voteTUIView = new VoteTUIView(voteMachine);
+		voteMachine.start();
+	}
+	
+	public void start() {
+		VoteTUIView.start();
 	}
 	
 	public void addParty(String party) {
@@ -27,11 +32,11 @@ public class Controller {
 		votes.addVote(party);
 	}
 	
-	public void showVotes() {
-		VoteTUIView.showVotes(VoteList.getVotes());
+	public void getVotes() {
+		VoteTUIView.showVotes(VoteList.getVotes());		
 	}
 	
-	public void showParties() {
+	public void getParties() {
 		VoteTUIView.showParties(PartyList.getParties());
 	}
 }

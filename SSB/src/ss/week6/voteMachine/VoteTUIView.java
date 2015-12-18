@@ -6,28 +6,32 @@ import java.util.Scanner;
 
 public class VoteTUIView {
 	
-	private Controller control = new Controller();
+	private static VoteMachine control;
 	
-public static void main(String[] args) {
-		
-		showHelp();
+	public VoteTUIView(VoteMachine voteMachine) {
+		control = voteMachine;
 	}
 	
-	public void start() {
+	/*public static void main(String[] args) {
+		
+		showHelp();
+	}*/
+	
+	public static void start() {
 		Scanner input = new Scanner(System.in);
 		while (true) {
 
 			System.out.print("command: ");
 			String command = input.nextLine();
 			
-			if (command.startsWith("VOTE")) {
+			if (command.startsWith("VOTE ")) {
 				control.addVote(command.replaceFirst("VOTE ", ""));
 			} else if (command.startsWith("ADD PARTY")) {
 				control.addParty(command.replaceFirst("ADD PARTY ", ""));
 			} else if (command.equals("VOTES")) {
-				control.showVotes();
+				control.getVotes();
 			} else if (command.equals("PARTIES")) {
-				control.showParties();
+				control.getParties();
 			} else if (command.equals("EXIT")) {
 				break;
 			} else if (command.equals("HELP")) {
@@ -35,7 +39,6 @@ public static void main(String[] args) {
 			} else {
 				System.out.println("Incorrect command type 'HELP' for more information");
 			}
-			
 		}
 		input.close();
 	}

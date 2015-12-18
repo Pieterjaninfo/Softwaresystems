@@ -12,18 +12,19 @@ public class VoteList {
 	 * @param Party The party that is voted for.
 	 * @return
 	 */
-	public boolean addVote(String party) {
+	public static boolean addVote(String party) {
 		if (party == null) {
 			return false;
 		}
 		if (votes.containsKey(party)) {
 			Integer numberOfVotes = votes.get(party);
-			votes.remove(party);
-			votes.put(party, numberOfVotes);
+			votes.put(party, ++numberOfVotes);
+			return true;
+		} else if (PartyList.hasParty(party)) {
+			votes.put(party, 0);
 			return true;
 		}
-		votes.put(party, 1);
-		return true;
+		return false;
 	}
 	
 	public static Map<String, Integer> getVotes() {
