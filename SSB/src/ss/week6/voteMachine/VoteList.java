@@ -2,8 +2,9 @@ package ss.week6.voteMachine;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Observable;
 
-public class VoteList {
+public class VoteList extends Observable {
 	
 	private static Map<String, Integer> votes = new HashMap<String, Integer>();
 	
@@ -12,19 +13,20 @@ public class VoteList {
 	 * @param Party The party that is voted for.
 	 * @return
 	 */
-	public static boolean addVote(String party) {
+	public void addVote(String party) {
 		if (party == null) {
-			return false;
+			return;
 		}
 		if (votes.containsKey(party)) {
 			Integer numberOfVotes = votes.get(party);
 			votes.put(party, ++numberOfVotes);
-			return true;
+			setChanged();
+			notifyObservers("vote added for " + party + ".");
 		} else if (PartyList.hasParty(party)) {
-			votes.put(party, 0);
-			return true;
+			votes.put(party, 1);
+			setChanged();
+			notifyObservers("vote added for " + party + ".");
 		}
-		return false;
 	}
 	
 	public static Map<String, Integer> getVotes() {

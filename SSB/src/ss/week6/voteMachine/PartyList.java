@@ -2,8 +2,9 @@ package ss.week6.voteMachine;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
-public class PartyList {
+public class PartyList extends Observable {
 
 	private static List<String> parties = new ArrayList<String>();
 	
@@ -12,13 +13,13 @@ public class PartyList {
 	 * @param party Patry to be added.
 	 * @return
 	 */
-	public boolean addParty(String party) {
+	public void addParty(String party) {
 		if (!parties.contains(party)) {
 			parties.add(party);
-			VoteList.addVote(party);
-			return true;
+			//VoteList.addVote(party);
+			setChanged();
+			notifyObservers("party " + party + " added.");
 		}
-		return false;
 	}
 	
 	public static List<String> getParties() {

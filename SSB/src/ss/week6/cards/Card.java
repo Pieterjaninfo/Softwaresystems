@@ -345,7 +345,6 @@ public class Card {
 	 */
 	public void write(PrintWriter p) {
 		p.write(this.toString() + "\n");
-		p.flush();
 	}
 	
 	/**
@@ -361,7 +360,6 @@ public class Card {
 		PrintWriter p;
 		
 		try {
-			//PrintWriter p = new PrintWriter("/home/bart/cardfile.txt");
 			p = new PrintWriter(args[0]);
 			System.out.println("printed to file");
 		} catch (ArrayIndexOutOfBoundsException e) {
@@ -378,7 +376,10 @@ public class Card {
 		c5.write(p);
 		c2.write(p);
 		c5.write(p);
+		p.flush();
+		p.close();
 	}
+	
 	/**
 	 * Read from Buffer.
 	 * Throws EOFException if finished.
@@ -387,21 +388,19 @@ public class Card {
 	 * @throws EOFException
 	 */
 	public static Card read(BufferedReader in) throws EOFException {
-		String inputLine;
+		String inputLine = null;
 		try {
 			inputLine = in.readLine();
-			while (inputLine != null) {
-				char[] res = stringToCodeFromLine(inputLine);
-				return new Card(res[0], res[1]);
-			}
-			throw new EOFException();
 				
-		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println("No argument given");
 		} catch (IOException e) {
-			throw new EOFException();
+			return null;
 		}
-		return null;
+		if (inputLine != null) {
+			char[] res = stringToCodeFromLine(inputLine);
+			return new Card(res[0], res[1]);
+		}
+		throw new EOFException();
+
 	}
 	/**
 	 * From an String will return the coded card char[]:

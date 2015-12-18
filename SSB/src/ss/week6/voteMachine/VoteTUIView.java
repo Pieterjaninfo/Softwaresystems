@@ -2,11 +2,13 @@ package ss.week6.voteMachine;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Scanner;
 
-public class VoteTUIView {
+public class VoteTUIView implements Observer, VoteView{
 	
-	private static VoteMachine control;
+	private VoteMachine control;
 	
 	public VoteTUIView(VoteMachine voteMachine) {
 		control = voteMachine;
@@ -17,7 +19,7 @@ public class VoteTUIView {
 		showHelp();
 	}*/
 	
-	public static void start() {
+	public void start() {
 		Scanner input = new Scanner(System.in);
 		while (true) {
 
@@ -43,20 +45,20 @@ public class VoteTUIView {
 		input.close();
 	}
 	
-	public static void showVotes(Map<String, Integer> map) {
+	public void showVotes(Map<String, Integer> map) {
 		for (String key: map.keySet()) {
 			System.out.printf("Party %s has %d votes.\n", key, map.get(key));
 		}
 	}
 	
-	public static void showParties(List<String> list) {
+	public void showParties(List<String> list) {
 		System.out.println("Parties:");
 		for (String party: list) {
-			System.out.printf("%s\n", party);
+			System.out.printf("\t%s\n", party);
 		}
 	}
 
-	public static void showHelp() {
+	public void showHelp() {
 		String addVote = "VOTE [party], Add a vote for a party.";
 		String addParty = "PARTY [party], Adds the party to the party list.";
 		String votes = "VOTES, Show all votes";
@@ -64,4 +66,13 @@ public class VoteTUIView {
 		String exit = "EXIT, exitst application.";
 		System.out.printf("Commands:\n%s\n%s\n%s\n%s\n%s\n", addVote, addParty, votes, parties, exit);
 	}
+	
+    public void showError(String message) {
+    	System.out.println(message);
+    }
+    
+    public void update(Observable o, Object arg) {
+    	System.out.println(arg);
+    }
+
 }

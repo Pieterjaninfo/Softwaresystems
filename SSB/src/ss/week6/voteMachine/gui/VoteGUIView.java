@@ -40,6 +40,8 @@ public class VoteGUIView implements VoteView {
 				this.voteMachine.getParties();
 			} else if (words.length == 1 && words[0].equals("EXIT")) {
 				running = false;
+			} else if (words.length == 1 && words[0].equals("VOTES")) {
+				this.voteMachine.getVotes();
 			} else {
 				print("Unknown command");
 			}
